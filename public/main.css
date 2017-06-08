@@ -1,0 +1,28 @@
+h1{
+	font-family: 'Abril Fatface', cursive;
+	font-size: 75px;
+	font-weight: lighter;
+	text-align: center;
+}
+
+img {
+	width: 45%;
+}
+
+h2{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 45px;
+	color: white;
+	text-align: center;
+}
+
+.empty {
+	background-image: url("empty_blue.JPG");
+	background-size: cover;
+
+}
+
+#empty {
+	height: 300px;
+	width:100%;
+}
