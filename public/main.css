@@ -1,28 +1,159 @@
+body,html{
+	background-image: url("black_linen_v2.png");
+}
+
+#mainpagelogin {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 20px;
+	color: white;
+	float: right;
+}
+
 h1{
-	font-family: 'Abril Fatface', cursive;
-	font-size: 75px;
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 100px;
 	font-weight: lighter;
 	text-align: center;
+	color: white;
+	width:100%;
+	margin: 0px;
 }
 
-img {
-	width: 45%;
+a{
+	text-decoration: none;
 }
 
-h2{
+#description {
+	background-color: white;
+	height: 100px;
+	width: 450px;
+	margin: auto;
+	border-radius: 7px;
+}
+
+p {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 30px;
+	text-align: center;
+	color: black;
+}
+
+div #empty {
+	width: 370px;
+	height:250px;
+	float: right;
+	/*width: 360px;
+	height:240px;
+	*/
+	background-image: url("empty_blue.JPG");
+	background-size: 360px 240px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: white;
+}
+
+div #full {
+	width: 370px;
+	height:250px;
+	/*width: 360px;
+	height:240px;
+	*/
+	background-image: url("full.jpg");
+	background-size: 360px 240px;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-color: white;
+}
+
+h2 span{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 60px;
+	color: white;
+	text-align: center;
+	background: rgb(0, 0, 0); /* fallback color */
+   	background: rgba(0, 0, 0, 0.7);
+   	margin-left: 0;
+}
+
+h3 {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 45px;
-	color: white;
+	color: black;
 	text-align: center;
 }
 
-.empty {
-	background-image: url("empty_blue.JPG");
-	background-size: cover;
-
+.login{
+	background-color: white;
+	height: 350px;
+	width: 400px;
+	margin: auto;
+	border-radius: 7px;
 }
 
-#empty {
-	height: 300px;
-	width:100%;
+.signup {
+	background-color: white;
+	height: 400px;
+	width: 400px;
+	margin: auto;
+	border-radius: 7px;
+}
+
+.login h3{
+	padding-top: 20px;
+}
+
+.signup h3{
+	padding-top: 20px;
+}
+
+.login label{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 25px;
+	margin-left: 20px;
+}
+
+.signup label{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 25px;
+	margin-left: 20px;
+}
+
+.login input{
+	margin-left: 50px;
+}
+
+.signup input{
+	margin-left: 50px;
+}
+
+.login button{
+	height:55px;
+	width:320px;
+	margin-top: 25px;
+	display:block;
+	background-color: black;
+	font-size:20px;
+	color:white;
+	border-radius: 5px;
+	margin-left: 40px;
+}
+
+.signup button {
+	height:55px;
+	width:320px;
+	margin-top: 25px;
+	display:block;
+	background-color: black;
+	font-size:20px;
+	color:white;
+	border-radius: 5px;
+	margin-left: 40px;
+}
+
+.login p {
+	color: white;
+}
+
+.signup p {
+	color: white;
 }

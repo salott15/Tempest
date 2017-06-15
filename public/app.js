@@ -2,16 +2,24 @@ $('document').ready(function(){
 
 console.log($("#empty").html())
 	$("#empty").hover(function(){
-	$(this).find("img").hide();
-	$(this).addClass("empty");
-	$(this).find("h2").html("Empty");
+	$(this).find("span").html("Empty");
 },
 function(){
-	$(this).find("img").show();
-	$(this).removeClass("empty");
-	$(this).find("h2").html("")
+	$(this).find("span").html("");
 })
 
-//$("#empty").click()
+});
+
+$('document').ready(function(){
+
+console.log($("#full").html())
+	$("#full").hover(function(){
+	$(this).find("span").html("Full");
+},
+function(){
+	$(this).find("span").html("");
+})
+
+//$("#full").click()
 
 });

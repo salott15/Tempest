@@ -2,7 +2,9 @@
 <html>
 <head>
   <title>Tempest</title>
+
   <link rel="stylesheet" type="text/css" href="/main.css">
+  <link rel="stylesheet" type="text/css" href="/float-grid.css">
 
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans+Condensed:300" rel="stylesheet">
 
@@ -15,16 +17,40 @@
 
 </head>
 <body>
-<h1>Tempest</h1>
 
-<div id = "full">
-<h2></h2>
-<img src="full.jpg">
+<a id = "mainpagelogin" href="/userlogin">Log In</a>
+
+<a href="/"><h1>Tempest</h1></a>
+
+<div id = "description">
+<p>Choose your next bar based on how busy it is, as rated by the people who are there.</p>
 </div>
 
-<div id="empty">
-<h2></h2>
-<img src="empty_blue.JPG">
+<br><br>
+
+<div class = "row">
+  <a href="/location"><div class= "col-6" id = "full">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+    <h2><span></span></h2>
+  </div>
+  </a>
+
+  <div class= "col-6" id="empty">
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+     <h2><a href="/location"><span></span></a></h2>
+  </div>
 </div>
 
 </body>

@@ -9,13 +9,21 @@
 
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans+Condensed:300" rel="stylesheet">
 
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4"
+    crossorigin="anonymous"></script>
+
     <style>
       /* Always set the map height explicitly to define the size of the div
        * element that contains the map. */
       #map {
         height: 100%;
+        width:80%;
+        margin: auto;
+        border: 5px black solid ;
       }
-      /* Optional: Makes the sample page fill the window. */
+      /* Option0al: Makes the sample page fill the window. */
       html, body {
         height: 100%;
         margin: 0;
@@ -24,23 +32,24 @@
     </style>
   </head>
   <body>
-  
-  <h1>Tempest</h1>
 
+  <a href="/"><h1>Tempest</h1></a>
+<br>
+<br>
     <div id="map"></div>
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
       // failed.", it means you probably did not give permission for the browser to
       // locate you.
-      var map, infoWindow;
+      var map, infoWindow, currentBar;
       function initMap() {
         map = new google.maps.Map(document.getElementById('map'), {
           center: {lat: -34.397, lng: 150.644},
           zoom: 15
         });
         infoWindow = new google.maps.InfoWindow;
-
+        currentBar = {}
         // Try HTML5 geolocation.
         if (navigator.geolocation) {
           navigator.geolocation.getCurrentPosition(function(position) {
@@ -56,7 +65,7 @@
 console.log(pos, googlePos)
   var request = {
     location: pos,
-    radius: '500',
+    radius: '5000',//TODO: Set radius to zoom level
     types: ['bar']
   };
 
@@ -64,6 +73,7 @@ console.log(pos, googlePos)
   service.nearbySearch(request, callback);
 
   function callback(results, status) {
+    console.log('google.maps.places:',google.maps.places);
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     for (var i = 0; i < results.length; i++) {
       var place = results[i];
@@ -73,6 +83,21 @@ console.log(pos, googlePos)
   else{
     console.log("Error", results, status);
   }
+}
+function createMarker(place) {
+  var placeLoc = place.geometry.location;
+  var marker = new google.maps.Marker({
+    map: map,
+    position: place.geometry.location
+  });
+  console.log(currentBar)
+  google.maps.event.addListener(marker, 'click', function() {
+    console.log(currentBar, this.position)
+    currentBar.lat = this.position.lat();
+    currentBar.lng = this.position.lng();
+    infoWindow.setContent(place.name);
+    infoWindow.open(map, this);
+  });
 }
 
             map.setCenter(pos);
@@ -92,6 +117,10 @@ console.log(pos, googlePos)
                               'Error: Your browser doesn\'t support geolocation.');
         infoWindow.open(map);
       }
+      $("body").on("click", ".gm-style-iw", function(e){
+       currentBar.barname =  $(this).find("div:first-child div").text()
+       console.log(currentBar)
+      })
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD20L_evAuqJolowLDq9G6WGtOX6noeLX4&libraries=places&callback=initMap">

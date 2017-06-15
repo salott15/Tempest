@@ -10,11 +10,12 @@ let express      = require('express'),
 
 //Requiring Routes
 let indexRoutes = require('./routes/index');
+let barRoutes = require('./routes/bar')
 
 //Secure route for variables
 require('dotenv').config({ path: 'variables.env' });
 
-//mongoose.connect('mongodb://localhost/local');
+mongoose.connect('mongodb://salott:everafter@ds157549.mlab.com:57549/barapp');
 app.use(bodyParser.urlencoded({extended: true}));
 app.set('view engine', 'ejs');
 app.use(express.static(__dirname + '/public'));
@@ -38,6 +39,7 @@ app.use((req, res, next) => {
   next();
  });
 app.use(indexRoutes);
+app.use("/bar", barRoutes);
 
 // passport.use(new LocalStrategy(User.authenticate()));
 // passport.serializeUser(User.serializeUser());
