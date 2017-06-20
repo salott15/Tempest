@@ -119,8 +119,10 @@ function createMarker(place) {
       }
       $("body").on("click", ".gm-style-iw", function(e){
        currentBar.barname =  $(this).find("div:first-child div").text()
-       console.log(currentBar)
-      })
+       $.ajax({method: "post", url: "/bar/WHATEVER", data: {barname: currentBar.barname}}).done(function(){
+        alert("Bar saved.")
+       });
+      });
     </script>
     <script async defer
     src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD20L_evAuqJolowLDq9G6WGtOX6noeLX4&libraries=places&callback=initMap">

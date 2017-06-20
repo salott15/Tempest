@@ -1,6 +1,8 @@
 let express = require('express');
 let router = express.Router();
 const mongoose = require('mongoose');
+const passport = require('passport');
+LocalStrategy  = require('passport-local').Strategy,
 
 mongoose.Promise = global.Promise;
 
@@ -24,7 +26,7 @@ router.get('/createaccount', (req,res) => {
 });
 
 router.post('/createaccount', (req,res) => {
-	console.log(req.params);
+	console.log(req.body);
 	User 
 	.create ({
 		username: req.body.username,
@@ -32,12 +34,33 @@ router.post('/createaccount', (req,res) => {
 		password: req.body.password
 	})
 	.then(
-		user => res.status(201).json(user.apiRepr()))
+		user => res.status(201).redirect("/"))
 	.catch(err => {
 		console.error(err);
 		res.status(500).json({message: 'Internal server error'});
 	});
 });
+
+passport.use(new LocalStrategy( function(username, password, done) { 
+	User.findOne({ username: username }, function (err, user) { 
+		console.log(user, password);
+		if (err) { 
+			return done(err); 
+		} 
+		if (!user) { 
+			return done(null, false, { message: 'Incorrect username.' }); 
+		} 
+		console.log(user.validPassword(user.password, password));
+		if (!user.validPassword(user.password, password)) { 
+			return done(null, false, { message: 'Incorrect password.' }); 
+		} 
+		console.log(user)
+		return done(null, user); 
+	}); 
+} ));
+
+router.post('/login', passport.authenticate('local', { successRedirect: '/',
+     failureRedirect: '/userlogin' }));
 
 router.get('/')
 

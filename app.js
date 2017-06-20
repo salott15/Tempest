@@ -4,7 +4,7 @@ let express      = require('express'),
   mongoose       = require('mongoose'),
   flash          = require('connect-flash'),
   passport       = require('passport'),
-  LocalStrategy  = require('passport-local'),
+  //LocalStrategy  = require('passport-local').Strategy,
    methodOverride = require('method-override');
   // seedDB         = require('./seed')//This will be used if you want mock data
 
@@ -41,9 +41,9 @@ app.use((req, res, next) => {
 app.use(indexRoutes);
 app.use("/bar", barRoutes);
 
-// passport.use(new LocalStrategy(User.authenticate()));
-// passport.serializeUser(User.serializeUser());
-// passport.deserializeUser(User.deserializeUser());
+//passport.use(new LocalStrategy());
+//passport.serializeUser(User.serializeUser());
+//passport.deserializeUser(User.deserializeUser());
 
 
 app.listen(process.env.PORT || 3000, function() {

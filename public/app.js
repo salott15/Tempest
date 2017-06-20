@@ -7,7 +7,6 @@ console.log($("#empty").html())
 function(){
 	$(this).find("span").html("");
 })
-
 });
 
 $('document').ready(function(){
