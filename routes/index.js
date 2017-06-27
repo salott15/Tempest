@@ -1,8 +1,7 @@
 let express = require('express');
 let router = express.Router();
 const mongoose = require('mongoose');
-const passport = require('passport');
-LocalStrategy  = require('passport-local').Strategy,
+const bcrypt = require('bcrypt-nodejs');
 
 mongoose.Promise = global.Promise;
 
@@ -10,6 +9,9 @@ const {User} = require('../models/users')
 
 //ROUTE ROUTE
 router.get('/', (req, res) => {
+  res.render('landing');
+});
+router.get('/:hash/:id/:un', (req, res) => {
   res.render('landing');
 });
 
@@ -26,44 +28,59 @@ router.get('/createaccount', (req,res) => {
 });
 
 router.post('/createaccount', (req,res) => {
-	console.log(req.body);
-	User 
-	.create ({
-		username: req.body.username,
-		email: req.body.email,
-		password: req.body.password
-	})
-	.then(
-		user => res.status(201).redirect("/"))
-	.catch(err => {
-		console.error(err);
-		res.status(500).json({message: 'Internal server error'});
-	});
+	console.log('.',req.body),bcrypt;
+  const SALT_FACTOR = 5;
+  bcrypt.genSalt(SALT_FACTOR, function(err, salt) {
+  		if (err) return err;
+  		bcrypt.hash(req.body.password, salt, null, function(err, hash) {
+  			if (err) return next(err);
+        req.session.usrhash = hash;
+        req.session.usrid = usr._id;
+        console.log('hash is:',hash, req.session);
+  			req.body.password = hash;
+
+        User
+      	.create ({
+      		username: req.body.username,
+      		email: req.body.email,
+      		password: req.body.password
+      	})
+      	.then(
+          // console.log('success:', user.password);
+      		user => res.status(201).redirect("/"))
+      	.catch(err => {
+      		console.error(err);
+      		res.status(500).json({message: 'Internal server error'});
+      	});
+  		});
+  	});
 });
 
-passport.use(new LocalStrategy( function(username, password, done) { 
-	User.findOne({ username: username }, function (err, user) { 
-		console.log(user, password);
-		if (err) { 
-			return done(err); 
-		} 
-		if (!user) { 
-			return done(null, false, { message: 'Incorrect username.' }); 
-		} 
-		console.log(user.validPassword(user.password, password));
-		if (!user.validPassword(user.password, password)) { 
-			return done(null, false, { message: 'Incorrect password.' }); 
-		} 
-		console.log(user)
-		return done(null, user); 
-	}); 
-} ));
+router.post('/login', (req,res)=>{
+  User.findOne({username:req.body.username})
+  .then(
+    (usr) =>{
+      console.log('.',usr);
+      bcrypt.compare(req.body.password, usr.password, function(err, status){
+    		if(status)
+        {
+          console.log(User.findById(usr._id).password);
+          let pseudoHash = (new Date()* new Date()+'').replace(/\+.*$/,'').replace(/\./g,''); console.log('pseudoHash:',pseudoHash);
 
-router.post('/login', passport.authenticate('local', { successRedirect: '/',
-     failureRedirect: '/userlogin' }));
+          User.findByIdAndUpdate(usr._id, { loginToken :  pseudoHash })
+		          .exec()
+              .then((usr)=>{
+                res.status(200).redirect('/'+pseudoHash+'/'+usr._id+'/'+usr.username)
+              })
+              .catch(err=>{ console.log('err:??',err);});
+        }
+        else{ res.status(403).json({message:'You be wrong yo'}); }
+    	});
+    }
+  )
+  .catch(err=>{ console.log('err:',err); })
+});
 
 router.get('/')
 
 module.exports = router;
-
-
