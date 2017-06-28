@@ -21,6 +21,10 @@ router.get('/userlogin', (req,res) => {
 	res.render('userlogin');
 });
 
+router.get('/bar', (req, res) => {
+	res.render('bar')
+});
+
 router.get('/createaccount', (req,res) => {
 	res.render('createaccount');
 });

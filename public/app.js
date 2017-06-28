@@ -18,7 +18,4 @@ console.log($("#full").html())
 function(){
 	$(this).find("span").html("");
 })
-
-//$("#full").click()
-
 });

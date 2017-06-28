@@ -26,6 +26,7 @@ userSchema.methods.apiRepr = function() {
 		email: this.email,
 		password: this.password,
 		id: this._id,
+		bars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bar' }]
 	};
 };
 

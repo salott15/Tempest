@@ -119,7 +119,7 @@ function createMarker(place) {
       }
       $("body").on("click", ".gm-style-iw", function(e){
        currentBar.barname =  $(this).find("div:first-child div").text()
-       $.ajax({method: "post", url: "/bar/WHATEVER", data: {barname: currentBar.barname}}).done(function(){
+       $.ajax({method: "post", url: "/bar/current", data: {barname: currentBar.barname}}).done(function(){
         alert("Bar saved.")
        });
       });
