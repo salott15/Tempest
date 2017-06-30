@@ -2,8 +2,8 @@ let express = require('express');
 let router = express.Router();
 const mongoose = require('mongoose');
 
-router.get('/', (req, res) => {
- // res.render('landing');
+router.get('/find/:barname/:lat/:lng', (req, res) => {
+ res.render('bar', {currentBarname:req.params.barname});
  console.log("getting bar")
 });
 

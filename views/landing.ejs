@@ -17,10 +17,10 @@
 <script type="text/javascript">
   let creds = window.location.pathname.split('/');
   console.log(creds);
-  if(creds[2]){
-    localStorage.setItem('hash',creds[1])
-    localStorage.setItem('uid',creds[2])
-    localStorage.setItem('userName',creds[3])
+  if(creds[3]){
+    localStorage.setItem('hash',creds[2])
+    localStorage.setItem('uid',creds[3])
+    localStorage.setItem('userName',creds[4])
     window.location.pathname = '';
   }
 </script>
@@ -62,8 +62,5 @@
      <h2><a href="/location"><span></span></a></h2>
   </div>
 </div>
-<script type="text/javascript">
-  $('h1').append(' ' + localStorage.getItem('userName'));
-</script>
 </body>
 </html>

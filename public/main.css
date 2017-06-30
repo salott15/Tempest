@@ -71,7 +71,6 @@ h2 span{
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 60px;
 	color: white;
-	text-align: center;
 	background: rgb(0, 0, 0); /* fallback color */
    	background: rgba(0, 0, 0, 0.7);
    	margin-left: 0;

@@ -11,7 +11,7 @@ const {User} = require('../models/users')
 router.get('/', (req, res) => {
   res.render('landing');
 });
-router.get('/:hash/:id/:un', (req, res) => {
+router.get('/li/:hash/:id/:un', (req, res) => {
   res.render('landing');
 });
 
@@ -21,10 +21,6 @@ router.get('/location', (req,res) => {
 
 router.get('/userlogin', (req,res) => {
 	res.render('userlogin');
-});
-
-router.get('/bar', (req, res) => {
-	res.render('bar')
 });
 
 router.get('/createaccount', (req,res) => {
@@ -74,7 +70,7 @@ router.post('/login', (req,res)=>{
           User.findByIdAndUpdate(usr._id, { loginToken :  pseudoHash })
 		          .exec()
               .then((usr)=>{
-                res.status(200).redirect('/'+pseudoHash+'/'+usr._id+'/'+usr.username)
+                res.status(200).redirect('/li'+ '/'+pseudoHash+'/'+usr._id+'/'+usr.username)
               })
               .catch(err=>{ console.log('err:??',err);});
         }
