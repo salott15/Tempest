@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const barSchema = mongoose.Schema({
 	name: {type: String, required: true},
 	busy: {type: String, required: false},
-	location: {type: String, required: true},
+	barId: {type: String, required: true},
 	_creator:{ type:mongoose.Schema.Types.ObjectId, ref:'user'},
 
 });

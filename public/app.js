@@ -7,10 +7,7 @@ console.log($("#empty").html())
 function(){
 	$(this).find("span").html("");
 })
-});
-
-$('document').ready(function(){
-
+//Home Page
 console.log($("#full").html())
 	$("#full").hover(function(){
 	$(this).find("span").html("Full");
@@ -18,4 +15,17 @@ console.log($("#full").html())
 function(){
 	$(this).find("span").html("");
 })
+
+//Bar Page
+$(".voteFull").click(function() {
+	console.log($(this).attr("data-barId"));
+	$.ajax({url:"/bar/current", method: "put", data:{name: $(this).attr("data-barname"), barId: $(this).attr("data-barId"), busy: "full"}})
+	.done(function(data){
+		console.log("done", data)
+	});
+});
+
+$(".voteEmpty").click(function() {
+	console.log("empty")
+});
 });

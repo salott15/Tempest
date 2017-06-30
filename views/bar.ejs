@@ -7,6 +7,13 @@
 
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans+Condensed:300" rel="stylesheet">
 
+  <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4"
+    crossorigin="anonymous"></script>
+
+    <script src="/app.js"></script>
+
 </head>
 <body>
 
@@ -16,11 +23,11 @@
 
 <br><br><br><br>
 
-<div class = "voteFull">
+<div class = "voteFull" data-barname = "<%= currentBarname %>" data-barId = "<%= currentBarname %><%= lat %><%= lng %>">
  <img src="/fullbeer.png">
  </div>
 
- <div class = "voteEmpty">
+ <div class = "voteEmpty" data-barId = "<%= currentBarname %><%= lat %><%= lng %>">
  <img src="/emptybeer.png">
  </div>
 
