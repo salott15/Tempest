@@ -27,5 +27,9 @@ $(".voteFull").click(function() {
 
 $(".voteEmpty").click(function() {
 	console.log("empty")
+	$.ajax({url:"/bar/current", method: "put", data:{name: $(this).attr("data-barname"), barId: $(this).attr("data-barId"), busy: "empty"}})
+	.done(function(data){
+		console.log("done", data)
+});
 });
 });

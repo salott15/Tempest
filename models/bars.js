@@ -4,7 +4,7 @@ const barSchema = mongoose.Schema({
 	name: {type: String, required: true},
 	busy: {type: String, required: false},
 	barId: {type: String, required: true},
-	_creator:{ type:mongoose.Schema.Types.ObjectId, ref:'user'},
+	users: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]
 
 });
 
@@ -13,7 +13,7 @@ barSchema.methods.apiRepr = function() {
 		name: this.name,
 		busy: this.busy,
 		id: this._id,
-		_creator: this._creator,
+		users: this.users
 	};
 }
 
