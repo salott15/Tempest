@@ -11,6 +11,13 @@ router.get('/find/:barname/:lat/:lng', (req, res) => {
  console.log("getting bar")
 });
 
+router.get('/status/:status', (req, res) => {
+	//res.render('barStatus', )
+	Bar.find({busy: req.params.status})
+	.then(
+		bar => {console.log(bar); res.status(200).render("barStatus", bar)})
+});
+
 router.post('/current', (req, res) => {
 	console.log(req.body)
 });
