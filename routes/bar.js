@@ -30,7 +30,7 @@ router.put('/current', (req, res) => {
       	.findOneAndUpdate ({
       		barId: encodeURI(req.body.barId),
       	},
-      		{busy: req.body.busy, barname: req.body.barname},
+      		{busy: req.body.busy, barname: req.body.barname, lat: req.body.lat, lng: req.body.lng},
       		{upsert: true}
       	)
       	.then(

@@ -23,11 +23,16 @@
 
 <br><br><br><br>
 
-<div class = "voteFull" data-barname = "<%= currentBarname %>" data-barId = "<%= currentBarname %><%= lat %><%= lng %>">
+<div class = "voteFull" 
+data-barname = "<%= currentBarname %>" 
+data-barId = "<%= currentBarname %><%= lat %><%= lng %>" 
+data-lat = "<%= lat %>"
+data-lng = "<%= lng %>">
  <img src="/fullbeer.png">
  </div>
 
- <div class = "voteEmpty" data-barId = "<%= currentBarname %><%= lat %><%= lng %>">
+ <div class = "voteEmpty" data-barId = "<%= currentBarname %><%= lat %><%= lng %>" data-lat = "<%= lat %>"
+data-lng = "<%= lng %>">
  <img src="/emptybeer.png">
  </div>
 
