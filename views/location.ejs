@@ -101,6 +101,12 @@ function createMarker(place) {
 }
 
             map.setCenter(pos);
+            let bounds = map.getBounds()
+             localStorage.setItem("boundsLatOne", bounds.f.b)
+             localStorage.setItem("boundsLat2", bounds.f.f)
+             localStorage.setItem("boundsLngOne", bounds.b.b)
+             localStorage.setItem("boundsLng2", bounds.b.f)
+             console.log("bounds", map.getBounds(), localStorage)
           }, function() {
             handleLocationError(true, infoWindow, map.getCenter());
           });

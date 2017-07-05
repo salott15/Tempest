@@ -16,7 +16,7 @@
 <script src="app.js"></script>
 <script type="text/javascript">
   let creds = window.location.pathname.split('/');
-  console.log(creds);
+  console.info(creds, "todo: Make this work");
   if(creds[3]){
     localStorage.setItem('hash',creds[2])
     localStorage.setItem('uid',creds[3])
