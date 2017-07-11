@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 
 const barSchema = mongoose.Schema({
-	name: {type: String, required: true},
+	barname: {type: String, required: true},
 	busy: {type: String, required: false},
 	barId: {type: String, required: true},
 	lat: {type: Number, required: true},
@@ -11,7 +11,7 @@ const barSchema = mongoose.Schema({
 
 barSchema.methods.apiRepr = function() {
 	return {
-		name: this.name,
+		barname: this.barname,
 		busy: this.busy,
 		id: this._id
 	};

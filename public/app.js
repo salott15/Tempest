@@ -20,7 +20,7 @@ function(){
 $(".voteFull").click(function() {
 	console.log($(this).attr("data-barId"));
 	$.ajax({url:"/bar/current", method: "put", data:{
-		name: $(this).attr("data-barname"), 
+		barname: $(this).attr("data-barname"), 
 		barId: $(this).attr("data-barId"), 
 		busy: "full", 
 		lat: $(this).attr("data-lat"), 
@@ -33,7 +33,7 @@ $(".voteFull").click(function() {
 $(".voteEmpty").click(function() {
 	console.log("empty")
 	$.ajax({url:"/bar/current", method: "put", data:{
-		name: $(this).attr("data-barname"), 
+		barname: $(this).attr("data-barname"), 
 		barId: $(this).attr("data-barId"), 
 		busy: "empty", 
 		lat: $(this).attr("data-lat"), 

@@ -11,11 +11,18 @@ router.get('/find/:barname/:lat/:lng', (req, res) => {
  console.log("getting bar")
 });
 
-router.get('/status/:status', (req, res) => {
+router.get('/status/:status/:boundsLatOne/:boundsLat2/:boundsLngOne/:boundsLng2', (req, res) => {
 	//res.render('barStatus', )
-	Bar.find({busy: req.params.status})
+	Bar.find({busy: req.params.status, 
+		// {'$gte': new Date('3/1/2014'), '$lt': new Date('3/16/2014')}
+		//lat: req.body.lat >= localStoarge.getItem("boundsLatOne") && req.body.lat <= localStorage.getItem("boundsLat2"), 
+		lat: {'$gte': req.params.boundsLatOne, '$lt': req.params.boundsLat2},
+		lng: {'$gte': req.params.boundsLngOne, '$lt': req.params.boundsLng2}
+	})
+		//lng: req.body.lng >= localStoarge.getItem("boundsLngOne") && req.body.lng <= localStoarge.getItem("boundsLng2")})
 	.then(
-		bar => {console.log(bar); res.status(200).render("barStatus", bar)})
+		bar => {console.log(bar);
+			res.render("status", {bars: bar})})
 });
 
 router.post('/current', (req, res) => {
