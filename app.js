@@ -10,7 +10,8 @@ let express      = require('express'),
 
 //Requiring Routes
 let indexRoutes = require('./routes/index');
-let barRoutes = require('./routes/bar')
+let barRoutes = require('./routes/bar');
+let userRoutes = require('./routes/user')
 
 //Secure route for variables
 require('dotenv').config({ path: 'variables.env' });
@@ -40,6 +41,7 @@ app.use((req, res, next) => {
  });
 app.use(indexRoutes);
 app.use("/bar", barRoutes);
+app.use('/user', userRoutes);
 
 //passport.use(new LocalStrategy());
 //passport.serializeUser(User.serializeUser());

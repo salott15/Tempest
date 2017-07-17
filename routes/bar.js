@@ -7,8 +7,18 @@ mongoose.Promise = global.Promise;
 const {Bar} = require('../models/bars')
 
 router.get('/find/:barname/:lat/:lng', (req, res) => {
- res.render('bar', {currentBarname:req.params.barname, lat:req.params.lat, lng:req.params.lng});
- console.log("getting bar")
+	let barInfo = {barname: req.params.barname, lat:req.params.lat, lng:req.params.lng}
+Bar.findOne(barInfo)
+.then(
+	(barFromMongo) => {console.log(barFromMongo)
+		if(!barFromMongo){
+			barFromMongo = barInfo
+			barFromMongo.busy = "not rated"
+		}
+
+	 res.render("bar", {bar:barFromMongo})
+// res.render('bar', {currentBarname:req.params.barname, lat:req.params.lat, lng:req.params.lng});
+ console.log("getting bar")})
 });
 
 router.get('/status/:status/:boundsLatOne/:boundsLat2/:boundsLngOne/:boundsLng2', (req, res) => {

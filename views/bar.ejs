@@ -6,6 +6,7 @@
 	<link rel="stylesheet" type="text/css" href="/main.css">
 
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans+Condensed:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet">
 
   <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -19,22 +20,36 @@
 
  <a href="/"><h1>Tempest</h1></a>
 
- <h2><%= currentBarname %></h2>
+ <h2><%= bar.barname %></h2>
 
-<br><br><br><br>
+ <h3>This bar is currently <%= bar.busy %>.<br><% if(bar.busy != "not rated") { %> Disagree?<% } %> Vote full or empty by clicking the icons below.</h3>
+
+<br><br>
+
 
 <div class = "voteFull" 
-data-barname = "<%= currentBarname %>" 
-data-barId = "<%= currentBarname %><%= lat %><%= lng %>" 
-data-lat = "<%= lat %>"
-data-lng = "<%= lng %>">
+data-barname = "<%= bar.barname %>" 
+data-barId = "<%= bar.barname %><%= bar.lat %><%= bar.lng %>" 
+data-lat = "<%= bar.lat %>"
+data-lng = "<%= bar.lng %>">
  <img src="/fullbeer.png">
  </div>
 
- <div class = "voteEmpty" data-barId = "<%= currentBarname %><%= lat %><%= lng %>" data-lat = "<%= lat %>"
-data-lng = "<%= lng %>">
+ <div class = "voteEmpty" data-barname = "<%= bar.barname %>" 
+data-barId = "<%= bar.barname %><%= bar.lat %><%= bar.lng %>" 
+data-lat = "<%= bar.lat %>"
+data-lng = "<%= bar.lng %>">
  <img src="/emptybeer.png">
  </div>
 
+ <br><br><br>
+
+<% if(bar.busy != "not rated") { %>
+<div class = "saveBar" data-barname = "<%= bar.barname %>" 
+data-barId = "<%= bar.barname %><%= bar.lat %><%= bar.lng %>" 
+data-lat = "<%= bar.lat %>"
+data-lng = "<%= bar.lng %>">
+	Save bar
+</div><% } %>
 </body>
 </html>

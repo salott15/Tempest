@@ -2,24 +2,30 @@ body,html{
 	background-image: url("black_linen_v2.png");
 }
 
-#mainpagelogin {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 20px;
-	color: white;
-	float: right;
-	padding-left: 15px;
-}
-
-#userbars {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 20px;
-	color: white;
-	float: right;
-}
-
 h1{
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 100px;
+	font-size: 80px;
+	font-weight: lighter;
+	text-align: left;
+	color: white;
+	margin:0px;
+	padding-left: 10px;
+}
+
+a{
+	text-decoration: none;
+}
+
+p {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 30px;
+	text-align: center;
+	color: black;
+}
+
+h2 {
+	font-family: 'Sanchez', serif;
+	font-size: 60px;
 	font-weight: lighter;
 	text-align: center;
 	color: white;
@@ -27,8 +33,37 @@ h1{
 	margin: 0px;
 }
 
-a{
-	text-decoration: none;
+h2 span{
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 60px;
+	color: white;
+	background: rgb(0, 0, 0); /* fallback color */
+   	background: rgba(0, 0, 0, 0.7);
+   	float:left;
+}
+
+h3 {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 45px;
+	font-weight: lighter;
+	color: white;
+	text-align: center;
+}
+
+#mainpagelogin {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 20px;
+	color: white;
+	float: right;
+	padding-left: 15px;
+	padding-right:10px;
+}
+
+#userbars {
+	font-family: 'Open Sans Condensed', sans-serif;
+	font-size: 20px;
+	color: white;
+	float: right;
 }
 
 #description {
@@ -39,25 +74,24 @@ a{
 	border-radius: 7px;
 }
 
-p {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 30px;
+.row{
 	text-align: center;
-	color: black;
+	margin-top: 50px;
 }
 
-div #empty {
+#empty {
 	width: 370px;
 	height:250px;
-	float: right;
 	background-image: url("empty_blue.JPG");
 	background-size: 360px 240px;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: white;
+	display:inline-block;
+	margin-left:8%;
 }
 
-div #full {
+#full {
 	width: 370px;
 	height:250px;
 	background-image: url("full.jpg");
@@ -65,22 +99,7 @@ div #full {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-color: white;
-}
-
-h2 span{
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 60px;
-	color: white;
-	background: rgb(0, 0, 0); /* fallback color */
-   	background: rgba(0, 0, 0, 0.7);
-   	margin-left: 0;
-}
-
-h3 {
-	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 45px;
-	color: white;
-	text-align: center;
+	display:inline-block;
 }
 
 .login{
@@ -189,12 +208,14 @@ h3 {
 	margin-top: 12px;
 }
 
-h2 {
+.saveBar {
+	color:black;
 	font-family: 'Open Sans Condensed', sans-serif;
-	font-size: 60px;
-	font-weight: lighter;
+	font-size: 30px;
 	text-align: center;
-	color: white;
-	width:100%;
-	margin: 0px;
+	height:50px;
+	width:175px;
+	border-radius: 50px;
+	background-color: white;
+	margin:auto;
 }

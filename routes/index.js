@@ -9,6 +9,9 @@ const {User} = require('../models/users')
 
 //ROUTE ROUTE
 router.get('/', (req, res) => {
+  res.render('location');
+});
+router.get('/landing', (req, res) => {
   res.render('landing');
 });
 router.get('/li/:hash/:id/:un', (req, res) => {
@@ -25,6 +28,10 @@ router.get('/userlogin', (req,res) => {
 
 router.get('/createaccount', (req,res) => {
 	res.render('createaccount');
+});
+
+router.get('/mybars', (req, res) => {
+  res.render('mybars');
 });
 
 router.post('/createaccount', (req,res) => {

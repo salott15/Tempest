@@ -15,6 +15,10 @@ console.log($("#full").html())
 function(){
 	$(this).find("span").html("");
 })
+let fullHref = `/bar/status/full/${localStorage.getItem("boundsLatOne")}/${localStorage.getItem("boundsLat2")}/${localStorage.getItem("boundsLngOne")}/${localStorage.getItem("boundsLng2")}`
+$("#full").closest("a").attr("href", fullHref)
+let emptyHref = `/bar/status/empty/${localStorage.getItem("boundsLatOne")}/${localStorage.getItem("boundsLat2")}/${localStorage.getItem("boundsLngOne")}/${localStorage.getItem("boundsLng2")}`
+$("#empty").closest("a").attr("href", emptyHref)
 
 //Bar Page
 $(".voteFull").click(function() {
@@ -41,5 +45,16 @@ $(".voteEmpty").click(function() {
 	.done(function(data){
 		console.log("done", data)
 });
+});
+
+$(".saveBar").click(function(){
+	if(localStorage.getItem("userName")){
+		$.ajax({url:"/user/current", method: "post", data:{
+			bars: $(this).attr("data-barId"),
+		}})
+	}
+	else{
+		window.location.href= "/userlogin"
+	}
 });
 });
