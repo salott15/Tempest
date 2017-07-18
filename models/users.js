@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
 	password: {type: String, required: true},
 	email: {type: String, required: true},
 	loginToken: {type: String, required: true, default:'new'},
-	bars: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Bar' }]
+	bars: [{ barName: String}]
 });
 
 // userSchema.pre('save', function(next) {

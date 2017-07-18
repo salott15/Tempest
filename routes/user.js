@@ -8,7 +8,13 @@ mongoose.Promise = global.Promise;
 const {User} = require('../models/users')
 
 router.post('/current', (req, res) => {
-	users.findOneAndUpdate({"_id": localStorage.getItem("uid")}, {bars:[req.body.barName]} )
+	console.log(req.body)
+	User.findOneAndUpdate({"_id": req.body.uid}, {$push: {bars: {barName: req.body.barid}}})
+	//.then(res.redirect("/mybars"))
+	.then((newBar)=>{ console.log(newBar,res.redirect)
+		setTimeout( function(){ res.redirect('/mybars') },1000)
+		res.end()})
+	.catch((e)=>console.log(e))
 })
 
 module.exports = router;

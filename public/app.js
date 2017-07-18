@@ -50,7 +50,8 @@ $(".voteEmpty").click(function() {
 $(".saveBar").click(function(){
 	if(localStorage.getItem("userName")){
 		$.ajax({url:"/user/current", method: "post", data:{
-			bars: $(this).attr("data-barId"),
+			barid: $(this).attr("data-barid"),
+			uid: localStorage.getItem("uid"),
 		}})
 	}
 	else{
