@@ -30,10 +30,6 @@ router.get('/createaccount', (req,res) => {
 	res.render('createaccount');
 });
 
-router.get('/mybars', (req, res) => {
-  res.render('mybars');
-});
-
 router.post('/createaccount', (req,res) => {
 	console.log('.',req.body),bcrypt;
   const SALT_FACTOR = 5;
@@ -77,6 +73,7 @@ router.post('/login', (req,res)=>{
           User.findByIdAndUpdate(usr._id, { loginToken :  pseudoHash })
 		          .exec()
               .then((usr)=>{
+                User.setuid(usr._id)
                 res.status(200).redirect('/li'+ '/'+pseudoHash+'/'+usr._id+'/'+usr.username)
               })
               .catch(err=>{ console.log('err:??',err);});

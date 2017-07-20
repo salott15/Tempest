@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>My Bars</title>
-	 <link rel="stylesheet" type="text/css" href="/main.css">
-  <link rel="stylesheet" type="text/css" href="/float-grid.css">
+<title>My Bars</title>
+ <link rel="stylesheet" type="text/css" href="/main.css"/>
+  <link rel="stylesheet" type="text/css" href="/float-grid.css"/>
 
-  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans+Condensed:300" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans+Condensed:300" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet"/>
 
 <script
     src="https://code.jquery.com/jquery-3.2.1.min.js"
@@ -20,7 +21,11 @@
 
 <a href="/"><h1>Tempest</h1></a>
 
-<h2>XXXX</h2>
+<h2>Hello, <%= user.username %>!</h2>
+
+<% for(var i=0; i < bars.length; i++){ %> 
+<h3><%= bars[i].barname %></h3> <br/>
+<% } %>
 
 </body>
 </html>

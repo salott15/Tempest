@@ -30,7 +30,14 @@ userSchema.methods.apiRepr = function() {
 		bars: this.bars,
 	};
 };
+userSchema.methods.setuid = function(uid){
+	this.uid = uid
+	return(true)
+}
 
+userSchema.methods.getuid = function(uid){
+	return(this.uid)
+}
 userSchema.methods.validPassword = function(savedPassword, enteredPassword) {
 	bcrypt.compare(enteredPassword, savedPassword, function(err, status){
 		loginStatus(status);
