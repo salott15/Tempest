@@ -12,10 +12,25 @@ router.get('/mybars', (req, res) => {
 	User.findOne({"_id":usrGlobal.id})
 	.then((usr) =>{
 		console.log('barsRES:',usr);
-		// if(!usr){ res.redirect('/userlogin'); return; }
+		let tmpBars = [];
+		usr.bars.map((itm) => {
+			if(itm)
+			{
+				let uniq = true;
+				for (var i = 0; i < tmpBars.length; i++)
+				{ if( tmpBars[i] === itm.barName ){ uniq = false; } }
+				if(uniq){ tmpBars.push(itm.barName); }
+			}
+			console.log('?????');
+		})
+		console.log('tmpBars:',tmpBars);
+		usr.uniqueBars = tmpBars;
+		console.log('usr.uniqueBars:',usr.bars);
+
+		if(!usr){ res.redirect('/userlogin'); return; }
 		res.render('mybars',{user:usr});
 	})
-	// .catch((e)=>res.redirect('/userlogin'))
+	.catch((e)=>res.redirect('/userlogin'))
 });
 
 router.get('/mybars/:username/:bars', (req, res) => {

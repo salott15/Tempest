@@ -24,13 +24,13 @@
 <h2>Hello, <%= user.username %>!</h2>
 
 <%
-for(var i=0; i < user.bars.length; i++){
-  if(user.bars[i]){
+for(var i=0; i < user.uniqueBars.length; i++){
+  if(user.uniqueBars[i]){
 %>
-  <h3><%= user.bars[i].barName %></h3> <br/>
+  <h3><%= user.uniqueBars[i] %></h3> <br/>
 <%
  }
-} 
+}
 %>
 
 </body>
