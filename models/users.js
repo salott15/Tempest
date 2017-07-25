@@ -8,6 +8,8 @@ const userSchema = mongoose.Schema({
 	bars: [{ barName: String}]
 });
 
+let usrGlobal = {};
+
 // userSchema.pre('save', function(next) {
 // 	const user = this, SALT_FACTOR = 5;
 // 	if (!user.isModified('password')) return next();
@@ -31,7 +33,7 @@ userSchema.methods.apiRepr = function() {
 	};
 };
 userSchema.methods.setuid = function(uid){
-	this.uid = uid
+	usrGlobal.id = uid;
 	return(true)
 }
 
@@ -49,4 +51,4 @@ userSchema.methods.validPassword = function(savedPassword, enteredPassword) {
 
 const User = mongoose.model('User', userSchema);
 
-module.exports = {User};
+module.exports = {User, usrGlobal};

@@ -63,17 +63,15 @@ router.post('/login', (req,res)=>{
   User.findOne({username:req.body.username})
   .then(
     (usr) =>{
-      console.log('.',usr);
       bcrypt.compare(req.body.password, usr.password, function(err, status){
     		if(status)
         {
-          console.log(User.findById(usr._id).password);
-          let pseudoHash = (new Date()* new Date()+'').replace(/\+.*$/,'').replace(/\./g,''); console.log('pseudoHash:',pseudoHash);
+          let pseudoHash = (new Date()* new Date()+'').replace(/\+.*$/,'').replace(/\./g,'');
 
           User.findByIdAndUpdate(usr._id, { loginToken :  pseudoHash })
 		          .exec()
               .then((usr)=>{
-                User.setuid(usr._id)
+                usr.setuid(usr._id)
                 res.status(200).redirect('/li'+ '/'+pseudoHash+'/'+usr._id+'/'+usr.username)
               })
               .catch(err=>{ console.log('err:??',err);});

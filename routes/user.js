@@ -5,16 +5,21 @@ const bcrypt = require('bcrypt-nodejs');
 
 mongoose.Promise = global.Promise;
 
-const {User} = require('../models/users')
+const {User, usrGlobal} = require('../models/users')
 
 router.get('/mybars', (req, res) => {
-	console.log(User.getuid())
-	//User.findOne("_id":  )
-  res.render('mybars');
+	console.log('usrGlobal.id',usrGlobal.id);
+	User.findOne({"_id":usrGlobal.id})
+	.then((usr) =>{
+		console.log('barsRES:',usr);
+		// if(!usr){ res.redirect('/userlogin'); return; }
+		res.render('mybars',{user:usr});
+	})
+	// .catch((e)=>res.redirect('/userlogin'))
 });
 
 router.get('/mybars/:username/:bars', (req, res) => {
-	//I know this is going to be something like lines 9-22 of bar.js, but I am not quite sure what I need. 
+	//I know this is going to be something like lines 9-22 of bar.js, but I am not quite sure what I need.
 })
 
 router.post('/current', (req, res) => {
