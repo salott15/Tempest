@@ -5,10 +5,11 @@ const bcrypt = require('bcrypt-nodejs');
 
 mongoose.Promise = global.Promise;
 
-const {User, usrGlobal} = require('../models/users')
+const {User, usrGlobal} = require('../models/users');
+const { Bar } = require('../models/bars')
 
 router.get('/mybars', (req, res) => {
-	console.log('usrGlobal.id',usrGlobal.id);
+	// console.log('usrGlobal.id',usrGlobal.id);
 	User.findOne({"_id":usrGlobal.id})
 	.then((usr) =>{
 		console.log('barsRES:',usr);
@@ -19,16 +20,27 @@ router.get('/mybars', (req, res) => {
 				let uniq = true;
 				for (var i = 0; i < tmpBars.length; i++)
 				{ if( tmpBars[i] === itm.barName ){ uniq = false; } }
-				if(uniq){ tmpBars.push(itm.barName); }
+				if(uniq){ tmpBars.push(encodeURI(itm.barName)); }
 			}
-			console.log('?????');
 		})
-		console.log('tmpBars:',tmpBars);
 		usr.uniqueBars = tmpBars;
-		console.log('usr.uniqueBars:',usr.bars);
 
+		// let userSavedBarInfo;
+		// tmpBars.map((itm) => {
+		// 	let encodeItm = encodeURI(itm);
+		// 	Bar.findOne({barId:encodeItm})
+		// 	.then((data) => {
+		// 		userSavedBarInfo = data;
+		// 		res.render('mybars',{user:usr, bars:userSavedBarInfo});
+		// 	});
+		// });
+		console.log(`Bar.find({ barId: { $in: ${tmpBars} } })`);
+		Bar.find({ barId: { $in: tmpBars } }).then((data)=>{
+			console.log(console.log('bar data:',data));
+			res.render('mybars',{user:usr, bars:data});
+		});
 		if(!usr){ res.redirect('/userlogin'); return; }
-		res.render('mybars',{user:usr});
+
 	})
 	.catch((e)=>res.redirect('/userlogin'))
 });
