@@ -3,7 +3,6 @@
 <head>
 <title>My Bars</title>
  <link rel="stylesheet" type="text/css" href="/main.css"/>
-  <link rel="stylesheet" type="text/css" href="/float-grid.css"/>
 
   <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Open+Sans+Condensed:300" rel="stylesheet"/>
   <link href="https://fonts.googleapis.com/css?family=Sanchez" rel="stylesheet"/>
@@ -13,7 +12,7 @@
     integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4"
     crossorigin="anonymous"></script>
 
-<script src="app.js"></script>
+<script src="/app.js"></script>
 </head>
 <body>
 <a id = "mainpagelogin" href="/userlogin">Log In</a>
@@ -22,10 +21,11 @@
 <a href="/"><h1>Tempest</h1></a>
 
 <h2>Hello, <%= user.username %>!</h2>
+<br>
 
 <%
 for(var i=0; i < bars.length; i++){ %>
-  <h3><%= bars[i].barname %></h3> - <%= bars[i].busy %> <br/><a href="#"><%= bars[i].lat %></a>
+  <div class= "barMyBar"><h3><%= bars[i].barname %></h3> <p>This bar is currently <%= bars[i].busy %>.</p><button class = "deleteBar" data-id = "<%= decodeURI(bars[0].barId) %>">Delete</button></div>
 <% } %>
 
 </body>

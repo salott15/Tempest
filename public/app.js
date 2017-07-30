@@ -58,4 +58,12 @@ $(".saveBar").click(function(){
 		window.location.href= "/userlogin"
 	}
 });
+
+console.log($(".deleteBar").attr("data-id"))
+
+$(".deleteBar").click(function(){
+	$.ajax({url:"/user/mybars", method: "delete", data:{
+		barid: $(this).attr("data-id"),
+	}})
+})
 });
