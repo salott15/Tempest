@@ -25,7 +25,7 @@
 
 <%
 for(var i=0; i < bars.length; i++){ %>
-  <div class= "barMyBar"><h3><%= bars[i].barname %></h3> <p>This bar is currently <%= bars[i].busy %>.</p><button class = "deleteBar" data-id = "<%= decodeURI(bars[0].barId) %>">Delete</button></div>
+  <div class= "barMyBar"><h3><%= bars[i].barname %></h3> <p>This bar is currently <%= bars[i].busy %>.</p><button class = "deleteBar" data-id = "<%= decodeURI(bars[i].barId) %>">Delete</button></div>
 <% } %>
 
 </body>
