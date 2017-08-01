@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 mongoose.Promise = global.Promise;
 
 const {Bar} = require('../models/bars')
+const {usrGlobal} = require('../models/users')
 
 router.get('/find/:barname/:lat/:lng', (req, res) => {
 	let barInfo = {barname: req.params.barname, lat:req.params.lat, lng:req.params.lng}
@@ -16,7 +17,7 @@ Bar.findOne(barInfo)
 			barFromMongo.busy = "not rated"
 		}
 
-	 res.render("bar", {bar:barFromMongo})
+	 res.render("bar", {bar:barFromMongo, user: usrGlobal.id})
 // res.render('bar', {currentBarname:req.params.barname, lat:req.params.lat, lng:req.params.lng});
  console.log("getting bar")})
 });

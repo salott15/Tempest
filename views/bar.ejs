@@ -18,10 +18,8 @@
 </head>
 <body>
 
-<a id = "mainpagelogin" href="/userlogin">Log In</a>
-<a id = "userbars" href="/user/mybars">My Bars</a>
+<% include nav.ejs %>
 
- <a href="/"><h1>Tempest</h1></a>
 
  <h2><%= bar.barname %></h2>
 
@@ -47,7 +45,7 @@ data-lng = "<%= bar.lng %>">
 
  <br><br><br>
 
-<% if(bar.busy != "not rated") { %>
+<% if(bar.busy != "not rated" && user) { %>
 <div class = "saveBar" data-barname = "<%= bar.barname %>" 
 data-barid = "<%= bar.barname %><%= bar.lat %><%= bar.lng %>" 
 data-lat = "<%= bar.lat %>"

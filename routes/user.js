@@ -25,15 +25,6 @@ router.get('/mybars', (req, res) => {
 		})
 		usr.uniqueBars = tmpBars;
 
-		// let userSavedBarInfo;
-		// tmpBars.map((itm) => {
-		// 	let encodeItm = encodeURI(itm);
-		// 	Bar.findOne({barId:encodeItm})
-		// 	.then((data) => {
-		// 		userSavedBarInfo = data;
-		// 		res.render('mybars',{user:usr, bars:userSavedBarInfo});
-		// 	});
-		// });
 		console.log(`Bar.find({ barId: { $in: ${tmpBars} } })`);
 		Bar.find({ barId: { $in: tmpBars } }).then((data)=>{
 			console.log(console.log('bar data:',data));

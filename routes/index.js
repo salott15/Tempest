@@ -5,17 +5,15 @@ const bcrypt = require('bcrypt-nodejs');
 
 mongoose.Promise = global.Promise;
 
-const {User} = require('../models/users')
+const {User, usrGlobal} = require('../models/users')
 
 //ROUTE ROUTE
 router.get('/', (req, res) => {
   res.render('location');
 });
-router.get('/landing', (req, res) => {
-  res.render('landing');
-});
+
 router.get('/li/:hash/:id/:un', (req, res) => {
-  res.render('landing');
+  res.render('location');
 });
 
 router.get('/location', (req,res) => {
@@ -25,6 +23,11 @@ router.get('/location', (req,res) => {
 router.get('/userlogin', (req,res) => {
 	res.render('userlogin');
 });
+
+router.get('/userlogout', (req,res) => {
+  delete usrGlobal.id
+  res.redirect('/location');
+})
 
 router.get('/createaccount', (req,res) => {
 	res.render('createaccount');
