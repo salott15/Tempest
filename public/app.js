@@ -8,6 +8,7 @@ function(){
 	$(this).find("span").html("");
 })
 //Home Page
+$('#instructions .close').click(function(){ $('#instructions').remove(); });
 console.log($("#full").html())
 	$("#full").hover(function(){
 	$(this).find("span").html("Full");
@@ -24,10 +25,10 @@ $("#empty").closest("a").attr("href", emptyHref)
 $(".voteFull, .voteEmpty").click(function() {
 	console.log($(this).attr("data-barId"));
 	$.ajax({url:"/bar/current", method: "put", data:{
-		barname: $(this).attr("data-barname"), 
-		barId: $(this).attr("data-barId"), 
+		barname: $(this).attr("data-barname"),
+		barId: $(this).attr("data-barId"),
 		busy: ($(this).hasClass("voteFull")) ? "full":"empty",
-		lat: $(this).attr("data-lat"), 
+		lat: $(this).attr("data-lat"),
 		lng: $(this).attr("data-lng")}})
 	.done(function(data){
 		console.log("done", data)

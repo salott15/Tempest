@@ -82,8 +82,16 @@
   </div>
   </a>
 </div>
-</body>
-</html>
+<div id="instructions">
+  <div class="close">X</div>
+  <div class="content">
+    <h3>Use this site by:</h3>
+    <ul>
+      <li>Doing stuff</li>
+      <li>Doing more stuff</li>
+    </ul>
+  </div>
+</div>
     <script>
       // Note: This example requires that you consent to location sharing when
       // prompted by your browser. If you see the error "The Geolocation service
@@ -94,7 +102,7 @@
         map = new google.maps.Map(document.getElementById('map'),{
           center: {lat: -34.397, lng: 150.644},
           zoom: 15
-        });
+        }); }
         infoWindow = new google.maps.InfoWindow;
         currentBar = {}
         // Try HTML5 geolocation.
@@ -161,7 +169,6 @@ function createMarker(place) {
           // Browser doesn't support Geolocation
           handleLocationError(false, infoWindow, map.getCenter());
         }
-      }
 
       function handleLocationError(browserHasGeolocation, infoWindow, pos) {
         infoWindow.setPosition(pos);
