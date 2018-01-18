@@ -1,6 +1,5 @@
 $('document').ready(function(){
 
-console.log($("#empty").html())
 	$("#empty").hover(function(){
 	$(this).find("span").html("Empty");
 },
@@ -9,7 +8,6 @@ function(){
 })
 //Home Page
 $('#instructions .close').click(function(){ $('#instructions').remove(); });
-console.log($("#full").html())
 	$("#full").hover(function(){
 	$(this).find("span").html("Full");
 },
