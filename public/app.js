@@ -35,10 +35,17 @@ $(".voteFull, .voteEmpty").click(function() {
 
 $(".saveBar").click(function(){
 	if(localStorage.getItem("userName")){
-		$.ajax({url:"/user/current", method: "post", data:{
-			barid: $(this).attr("data-barid"),
-			uid: localStorage.getItem("uid"),
-		}})
+		$.ajax({
+			url:"/user/current",
+			method: "post",
+			data:{
+				barid: $(this).attr("data-barid"),
+				uid: localStorage.getItem("uid"),
+			},
+			success: function(response) {
+				window.location.href= "/user/mybars"
+			}
+		})
 	}
 	else{
 		window.location.href= "/userlogin"
@@ -46,8 +53,13 @@ $(".saveBar").click(function(){
 });
 
 $(".deleteBar").click(function(){
-	$.ajax({url:"/user/mybars", method: "delete", data:{
-		barid: $(this).attr("data-id"),
-	}})
+	$.ajax({
+		url:"/user/mybars",
+		method: "delete",
+		data:{ barid: $(this).attr("data-id")},
+		success: function(response) {
+			window.location.reload()
+		}
+	})
 })
 });
