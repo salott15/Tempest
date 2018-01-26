@@ -71,7 +71,7 @@ button{
 	padding-right:10px;
 }
 
-#userbars {
+#userbars, #info {
 	font-family: 'Open Sans Condensed', sans-serif;
 	font-size: 20px;
 	color: white;
@@ -255,6 +255,7 @@ button{
 	top:0;
 	width:100%;
 	z-index:500;
+	display: none;
 }
 #instructions .close
 {

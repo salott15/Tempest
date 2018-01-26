@@ -1,19 +1,20 @@
 <a id = "mainpagelogin" href="/userlogin">Log In</a>
 <a id = "userbars" href="/user/mybars">My Bars</a>
+    <a id="info" href="#">Info</a>
 
 <a href="/"><h1>Tempest</h1></a>
 
 <script type="text/javascript">
 console.log(localStorage.getItem("uid").length)
-	if(localStorage.getItem("uid").length){
-		$('#mainpagelogin').attr("href", "/userlogout").text("Log Out")
-	}
-	else{
-		$('#mainpagelogin').attr("href", "/userlogin").text("Log In")
-	};
-	$('#mainpagelogin').click(function(){
-		if($(this).attr("href") == "/userlogout"){
-			delete localStorage.uid
-		}
-	})
+    if(localStorage.getItem("uid").length){
+        $('#mainpagelogin').attr("href", "/userlogout").text("Log Out")
+    }
+    else{
+        $('#mainpagelogin').attr("href", "/userlogin").text("Log In")
+    };
+    $('#mainpagelogin').click(function(){
+        if($(this).attr("href") == "/userlogout"){
+            delete localStorage.uid
+        }
+    })
 </script>
